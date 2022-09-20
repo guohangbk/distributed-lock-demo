@@ -1,0 +1,10 @@
+rootProject.name = 'distributed-lock-demo'
+
+
+dependencyResolutionManagement {
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+    }
+}

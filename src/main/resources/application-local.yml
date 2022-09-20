@@ -1,0 +1,45 @@
+server:
+  port: 7777
+  shutdown: graceful
+  servlet:
+    encoding:
+      enabled: true
+      charset: UTF-8
+  tomcat:
+    mbeanregistry:
+      enabled: true
+
+spring:
+  application:
+    name: distributed-lock-demo
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/distributed-lock-demo
+    username: postgres
+    password: postgres
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 10
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 0
+    lettuce:
+      pool:
+        max-active: 8
+        min-idle: 4
+        max-wait: 100ms
+        time-between-eviction-runs: 60s
+
+zookeeper:
+  curator:
+    host: 127.0.0.1:2181
+    maxRetries: 3
+    namespace: demo
+    sessionTimeOut: 50000
+    connectionTimeout: 50000
+    sleepMsBetweenRetry: 1000
+
+mybatis:
+  mapper-locations: classpath:mybatis/*.xml
